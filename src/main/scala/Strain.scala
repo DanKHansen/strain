@@ -1,6 +1,6 @@
 object Strain:
    def keep[A](seq: Seq[A], predicate: A => Boolean): Seq[A] =
-      seq.filter(predicate)
+      for elem <- seq if predicate(elem) yield elem 
 
    def discard[A](seq: Seq[A], predicate: A => Boolean): Seq[A] =
-      seq.filterNot(predicate)
+      for elem <- seq if !predicate(elem) yield elem
